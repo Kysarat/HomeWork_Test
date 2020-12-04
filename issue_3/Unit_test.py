@@ -3,17 +3,18 @@ import unittest
 
 
 class Test_one_hot(unittest.TestCase):
-
     def test_base(self):
         """
         Проверка на равенство полученных значений с ожидаемым выводом функции
         """
         capitals = ['Moscow', 'New York', 'Moscow', 'London']
         transformed_cities = fit_transform(capitals)
-        exp_transformed_cities = [('Moscow', [0, 0, 1]),
-                                  ('New York', [0, 1, 0]),
-                                  ('Moscow', [0, 0, 1]),
-                                  ('London', [1, 0, 0])]
+        exp_transformed_cities = [
+            ('Moscow', [0, 0, 1]),
+            ('New York', [0, 1, 0]),
+            ('Moscow', [0, 0, 1]),
+            ('London', [1, 0, 0]),
+        ]
         self.assertEqual(transformed_cities, exp_transformed_cities)
 
     def test_weather(self):
@@ -22,10 +23,12 @@ class Test_one_hot(unittest.TestCase):
         """
         words = ['cold', 'cold', 'warm', 'cold', 'warm', 'hot']
         transformed_words = fit_transform(words)
-        exp_str = [('cold', [0, 0, 1]),
-                   ('cold', [0, 0, 1]),
-                   ('warm', [1, 1, 0]),
-                   ('hot', [1, 0, 0])]
+        exp_str = [
+            ('cold', [0, 0, 1]),
+            ('cold', [0, 0, 1]),
+            ('warm', [1, 1, 0]),
+            ('hot', [1, 0, 0]),
+        ]
         self.assertNotEqual(transformed_words, exp_str)
 
     def test_exception(self):
@@ -56,7 +59,3 @@ class Test_one_hot(unittest.TestCase):
         """
         city = []
         self.assertEqual(fit_transform(city), [])
-
-
-if __name__ == '__main__':
-    unittest.main()
